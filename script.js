@@ -191,7 +191,6 @@ TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
 TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
-*/
 
 function checkDogs(dogsJulia, dogsKate) {
   const dogsJuliaCorrected = dogsJulia.slice(1, -2);
@@ -200,8 +199,9 @@ function checkDogs(dogsJulia, dogsKate) {
   const dogs = [...dogsJuliaCorrected, ...dogsKate];
   dogs.forEach((dog, i) => {
     dog >= 3
-      ? console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`)
-      : console.log(`Dog number ${i + 1} is a puppy, and is ${dog} years old`);
+    ? console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`)
+    : console.log(`Dog number ${i + 1} is a puppy, and is ${dog} years old`);
   });
 }
 checkDogs([3, 5, 2, 12, 7], [9, 16, 6, 8, 3]);
+*/
