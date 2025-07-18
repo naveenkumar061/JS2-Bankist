@@ -65,16 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
-
 // const movements =  [16000, 36000, -32000, 240000, -52000, -10400, 5600, 104000];
 
 /*
 /////////////////////////////////////////////////
+// Simple Array Methods
 
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
@@ -107,17 +102,18 @@ console.log([...arr, ...arr2]);
 
 // JOIN
 console.log(letters.join('-'));
-*/
 
+/////////////////////////////////////////////////
+// Looping Arrays: forEach
 const movements = [16000, 36000, -32000, 240000, -52000, -10400, 5600, 104000];
 
 // for (const movement of movements) {
-for (const [i, movement] of movements.entries()) {
+  for (const [i, movement] of movements.entries()) {
   if (movement > 0) {
     console.log(`Movement ${i + 1}: You deposited ${movement}`);
   } else {
     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
-  }
+}
 }
 
 console.log('-----FOREACH-----');
@@ -126,9 +122,29 @@ movements.forEach(function (mov, i, arr) {
     console.log(`Movement ${i + 1}: You deposited ${mov}`);
   } else {
     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
-  }
+}
 });
 // 0:function(16000)
 // 1:function(36000)
 // 2:function(-32000)
 // ...
+*/
+
+// Map
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+  ['INR', 'Indian Rupee'],
+]);
+
+currencies.forEach((value, key, map) => {
+  console.log(`${key}: ${value}`);
+});
+
+// Set
+const currenciesUnique = new Set(['USD', 'GBP', 'EUR', 'INR', 'INR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach((value, _value, set) => {
+  console.log(`${_value}: ${value}`);
+});
