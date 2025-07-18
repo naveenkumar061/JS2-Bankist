@@ -6,29 +6,29 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
-  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  owner: 'Naveen Kumar Devarashetty',
+  movements: [16000, 36000, -32000, 240000, -52000, -10400, 5600, 104000],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  owner: 'Raju Kumar',
+  movements: [400000, 272000, -12000, -63200, -256800, -80000, 680000, -2400],
   interestRate: 1.5,
   pin: 2222,
 };
 
 const account3 = {
-  owner: 'Steven Thomas Williams',
-  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  owner: 'Shiva Kumar',
+  movements: [16000, -16000, 27200, -24000, -1600, 4000, 32000, -36800],
   interestRate: 0.7,
   pin: 3333,
 };
 
 const account4 = {
-  owner: 'Sarah Smith',
-  movements: [430, 1000, 700, 50, 90],
+  owner: 'Sarah Willams',
+  movements: [34400, 80000, 56000, 4000, 7200],
   interestRate: 1,
   pin: 4444,
 };
@@ -128,8 +128,9 @@ movements.forEach(function (mov, i, arr) {
 // 1:function(36000)
 // 2:function(-32000)
 // ...
-*/
 
+/////////////////////////////////////////////////
+// forEach With Maps and Sets
 // Map
 const currencies = new Map([
   ['USD', 'United States dollar'],
@@ -148,3 +149,4 @@ console.log(currenciesUnique);
 currenciesUnique.forEach((value, _value, set) => {
   console.log(`${_value}: ${value}`);
 });
+*/
