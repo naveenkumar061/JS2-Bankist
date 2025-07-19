@@ -400,3 +400,7 @@ console.log(accounts);
 const account = accounts.find(acc => (acc.owner = 'Naveen Kumar Devarashetty'));
 console.log(account);
 */
+
+console.log(movements);
+console.log(movements.findLast(mov => mov < 0));
+console.log(movements.findLastIndex(mov => mov < 0));
