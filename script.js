@@ -326,3 +326,10 @@ const totalDepositsUSD = movements
 .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
 */
+
+console.log(movements.find(mov => mov < 0));
+
+console.log(accounts);
+
+const account = accounts.find(acc => (acc.owner = 'Naveen Kumar Devarashetty'));
+console.log(account);
