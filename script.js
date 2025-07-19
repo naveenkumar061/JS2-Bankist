@@ -7,28 +7,34 @@
 // Data
 const account1 = {
   owner: 'Naveen Kumar Devarashetty',
-  movements: [16000, 36000, -32000, 240000, -52000, -10400, 5600, 104000],
+  movements: [
+    17238, 38785.5, -34476, 258570, -56023.5, -11204.699999999999, 6033.3,
+    112047,
+  ],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
   owner: 'Raju Kumar',
-  movements: [400000, 272000, -12000, -63200, -256800, -80000, 680000, -2400],
+  movements: [
+    430950, 293046, -12928.5, -68090.09999999999, -276669.89999999997, -86190,
+    732615, -2585.7,
+  ],
   interestRate: 1.5,
   pin: 2222,
 };
 
 const account3 = {
   owner: 'Shiva Kumar',
-  movements: [16000, -16000, 27200, -24000, -1600, 4000, 32000, -36800],
+  movements: [17238, -17238, 29304.6, -25857, -1723.8, 4309.5, 34476, -39647.4],
   interestRate: 0.7,
   pin: 3333,
 };
 
 const account4 = {
   owner: 'Sarah Willams',
-  movements: [34400, 80000, 56000, 4000, 7200],
+  movements: [37061.7, 86190, 60333, 4309.5, 7757.099999999999],
   interestRate: 1,
   pin: 4444,
 };
@@ -86,7 +92,9 @@ displayMovements(account1.movements);
 /////////////////////////////////////////////////
 // LECTURES
 
-// const movements =  [16000, 36000, -32000, 240000, -52000, -10400, 5600, 104000];
+const movements = [
+  17238, 38785.5, -34476, 258570, -56023.5, -11204.699999999999, 6033.3, 112047,
+];
 
 /*
 /////////////////////////////////////////////////
@@ -205,3 +213,24 @@ function checkDogs(dogsJulia, dogsKate) {
 }
 checkDogs([3, 5, 2, 12, 7], [9, 16, 6, 8, 3]);
 */
+
+const inrToUsd = 0.012;
+
+const movementsUSD = movements.map(mov => mov * inrToUsd);
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * inrToUsd);
+}
+console.log(movementsUSDfor);
+
+const movementsDescription = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? `deposited` : `withdrew`} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescription);
