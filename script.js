@@ -7,34 +7,28 @@
 // Data
 const account1 = {
   owner: 'Naveen Kumar Devarashetty',
-  movements: [
-    17238, 38785.5, -34476, 258570, -56023.5, -11204.699999999999, 6033.3,
-    112047,
-  ],
+  movements: [20000, 40000, -30000, 250000, -56000, -11000, 6000, 150000],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
   owner: 'Raju Kumar',
-  movements: [
-    430950, 293046, -12928.5, -68090.09999999999, -276669.89999999997, -86190,
-    732615, -2585.7,
-  ],
+  movements: [450000, 300000, -13000, -70000, -300000, -90000, 750000, -3000],
   interestRate: 1.5,
   pin: 2222,
 };
 
 const account3 = {
   owner: 'Shiva Kumar',
-  movements: [17238, -17238, 29304.6, -25857, -1723.8, 4309.5, 34476, -39647.4],
+  movements: [17500, -17000, 30000, -25000, -1700, 4500, 35000, -40000],
   interestRate: 0.7,
   pin: 3333,
 };
 
 const account4 = {
   owner: 'Sarah Willams',
-  movements: [37061.7, 86190, 60333, 4309.5, 7757.099999999999],
+  movements: [40000, 90000, 60000, 4500, 8000],
   interestRate: 1,
   pin: 4444,
 };
@@ -68,6 +62,8 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 const toast = document.getElementById('toast');
 
+/////////////////////////////////////////////////
+// Functions
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
 
@@ -86,26 +82,29 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `₹ ${balance}`;
+};
+
+const calcDisplaySummary = function (account) {
+  const incomes = account.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `₹ ${incomes}`;
-  const out = movements
+  const out = account.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `₹ ${Math.abs(out)}`;
 
-  const interest = movements
+  const interest = account.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * account.interestRate) / 100)
     .filter(int => int >= 100)
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `₹ ${interest}`;
 };
-calcDisplaySummary(account1.movements);
 
 const createUsernames = function (accs) {
   accs.forEach(acc => {
@@ -118,11 +117,37 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `₹ ${balance}`;
-};
-calcDisplayBalance(account1.movements);
+// Event handler
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  // Prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and message
+    labelWelcome.textContent = `Welcome, ${currentAccount.owner.split(' ')[0]}`;
+    containerApp.style.opacity = 100;
+
+    // Clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    // Display movements
+    displayMovements(currentAccount.movements);
+
+    // Display balance
+    calcDisplayBalance(currentAccount.movements);
+
+    // Display Summary
+    calcDisplaySummary(currentAccount);
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -325,7 +350,6 @@ const totalDepositsUSD = movements
 .map(mov => mov * inrToUsd)
 .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
-*/
 
 console.log(movements.find(mov => mov < 0));
 
@@ -333,3 +357,4 @@ console.log(accounts);
 
 const account = accounts.find(acc => (acc.owner = 'Naveen Kumar Devarashetty'));
 console.log(account);
+*/
