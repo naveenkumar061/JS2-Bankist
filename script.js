@@ -98,7 +98,12 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
-console.log(accounts);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `₹ ${balance}`;
+};
+calcDisplayBalance(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -245,7 +250,6 @@ const movementsDescription = movements.map(
 )}`
 );
 console.log(movementsDescription);
-*/
 
 const deposits = movements.filter(mov => mov > 0);
 console.log(movements);
@@ -253,3 +257,16 @@ console.log(deposits);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+*/
+
+console.log(movements);
+
+const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+console.log(balance);
+
+// Maximum Value
+const maximum = movements.reduce(
+  (acc, mov) => (acc > mov ? acc : mov),
+  movements[0]
+);
+console.log(maximum);
