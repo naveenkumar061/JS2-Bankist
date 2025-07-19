@@ -88,6 +88,18 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const createUsernames = function (accs) {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -212,7 +224,6 @@ function checkDogs(dogsJulia, dogsKate) {
   });
 }
 checkDogs([3, 5, 2, 12, 7], [9, 16, 6, 8, 3]);
-*/
 
 const inrToUsd = 0.012;
 
@@ -230,7 +241,8 @@ console.log(movementsUSDfor);
 const movementsDescription = movements.map(
   (mov, i) =>
     `Movement ${i + 1}: You ${mov > 0 ? `deposited` : `withdrew`} ${Math.abs(
-      mov
-    )}`
+  mov
+)}`
 );
 console.log(movementsDescription);
+*/
