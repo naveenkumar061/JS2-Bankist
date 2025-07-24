@@ -494,7 +494,7 @@ console.log(groupedByActivity);
 
 const groupedAccountsByType = Object.groupBy(accounts, ({ type }) => type);
 console.log(groupedAccountsByType);
-*/
+
 
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 3, 4, 5, 6, 7));
@@ -525,3 +525,12 @@ labelBalance.addEventListener('click', function () {
 
   console.log(movementsUI);
 });
+*/
+
+console.log(movements);
+const reversedMov = movements.toReversed();
+console.log(reversedMov);
+console.log(movements);
+
+// toSorted (sort), toSpliced(splice)
+const newMovements = movements.with(1, 2000);
