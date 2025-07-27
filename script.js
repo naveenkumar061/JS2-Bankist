@@ -11,6 +11,19 @@ const account1 = {
   interestRate: 1.2, // %
   pin: 1111,
   type: 'premium',
+
+  movementsDates: [
+    '2023-11-18T21:31:17.178Z',
+    '2023-12-23T07:42:02.383Z',
+    '2024-01-28T09:15:04.904Z',
+    '2024-04-01T10:17:24.185Z',
+    '2024-05-08T14:11:59.604Z',
+    '2024-05-27T17:01:17.194Z',
+    '2024-07-11T23:36:17.929Z',
+    '2024-07-12T10:51:36.790Z',
+  ],
+  currency: 'INR',
+  locale: 'ind-IND',
 };
 
 const account2 = {
@@ -19,6 +32,19 @@ const account2 = {
   interestRate: 1.5,
   pin: 2222,
   type: 'standard',
+
+  movementsDates: [
+    '2023-11-18T21:31:17.178Z',
+    '2023-12-23T07:42:02.383Z',
+    '2024-01-28T09:15:04.904Z',
+    '2024-04-01T10:17:24.185Z',
+    '2024-05-08T14:11:59.604Z',
+    '2024-05-27T17:01:17.194Z',
+    '2024-07-11T23:36:17.929Z',
+    '2024-07-12T10:51:36.790Z',
+  ],
+  currency: 'INR',
+  locale: 'ind-IND',
 };
 
 const account3 = {
@@ -27,6 +53,19 @@ const account3 = {
   interestRate: 0.7,
   pin: 3333,
   type: 'premium',
+
+  movementsDates: [
+    '2023-11-18T21:31:17.178Z',
+    '2023-12-23T07:42:02.383Z',
+    '2024-01-28T09:15:04.904Z',
+    '2024-04-01T10:17:24.185Z',
+    '2024-05-08T14:11:59.604Z',
+    '2024-05-27T17:01:17.194Z',
+    '2024-07-11T23:36:17.929Z',
+    '2024-07-12T10:51:36.790Z',
+  ],
+  currency: 'INR',
+  locale: 'ind-IND',
 };
 
 const account4 = {
@@ -35,6 +74,19 @@ const account4 = {
   interestRate: 1,
   pin: 4444,
   type: 'basic',
+
+  movementsDates: [
+    '2023-11-18T21:31:17.178Z',
+    '2023-12-23T07:42:02.383Z',
+    '2024-01-28T09:15:04.904Z',
+    '2024-04-01T10:17:24.185Z',
+    '2024-05-08T14:11:59.604Z',
+    '2024-05-27T17:01:17.194Z',
+    '2024-07-11T23:36:17.929Z',
+    '2024-07-12T10:51:36.790Z',
+  ],
+  currency: 'INR',
+  locale: 'ind-IND',
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -161,7 +213,7 @@ btnLogin.addEventListener('click', function (e) {
 
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
-  const amount = Number(inputTransferAmount.value);
+  const amount = +inputTransferAmount.value;
   const receiverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
@@ -183,7 +235,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = +inputLoanAmount.value;
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= 0.1 * amount)) {
     currentAccount.movements.push(amount);
@@ -197,7 +249,7 @@ btnClose.addEventListener('click', function (e) {
 
   if (
     inputCloseUsername.value === currentAccount.username &&
-    Number(inputClosePin.value) === currentAccount.pin
+    +inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
       acc => acc.username === currentAccount.username
@@ -525,7 +577,7 @@ labelBalance.addEventListener('click', function () {
 
   console.log(movementsUI);
 });
-*/
+
 
 console.log(movements);
 const reversedMov = movements.toReversed();
@@ -534,3 +586,11 @@ console.log(movements);
 
 // toSorted (sort), toSpliced(splice)
 const newMovements = movements.with(1, 2000);
+*/
+
+// Conversion
+console.log(Number('23'));
+console.log(+'23');
+
+// Parsing
+console.log(Number.parseInt('30px', 10));
